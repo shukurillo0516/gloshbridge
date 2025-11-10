@@ -1,0 +1,4 @@
+scikit-learn
+numpy
+matplotlib
+hdbscan==0.8.40

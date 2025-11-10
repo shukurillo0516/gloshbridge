@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=80", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gloshbridge"
+version = "0.1.1"
+description = "A simple library that enables you to use glosh from different libraries."
+authors = [
+    {name = "Shukurillo", email = "m.shukurillo2002@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "scikit-learn",
+    "numpy",
+    "matplotlib",
+    "hdbscan==0.8.40"
+]
+
+[tool.setuptools.packages.find]
+include = ["gloshbridge*"]
+
+[tool.setuptools.package-data]
+"gloshbridge" = [
+    "binaries/elki-bundle-0.8.0.jar",
+    "binaries/rust_hdbscan",
+    "out/*",
+    "out_java/*",
+    "tmp/*"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/shukurillo0516/gloshbridge.git"

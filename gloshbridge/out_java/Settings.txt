@@ -1,0 +1,43 @@
+# Settings:
+# elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /home/shukurillo/lab/OD/ParameterFree-HDBSCAN-Outlier-Detection/datasets/tmp/cleaned.csv
+# -dbc.parser NumberVectorLabelParser
+# 
+# elki.datasource.parser.CSVReaderFormat
+# -parser.colsep \s*[,;\s]\s*
+# -parser.quote "'
+# -string.comment ^\s*(#|//|;).*$
+# 
+# elki.datasource.parser.NumberVectorLabelParser
+# -parser.labelIndices [unset]
+# -parser.vector-type DoubleVector
+# 
+# elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# elki.workflow.AlgorithmStep
+# -time false
+# -algorithm outlier.clustering.GLOSH
+# 
+# elki.clustering.hierarchical.extraction.HDBSCANHierarchyExtraction
+# -algorithm HDBSCANLinearMemory
+# 
+# elki.clustering.hierarchical.HDBSCANLinearMemory
+# -algorithm.distancefunction minkowski.EuclideanDistance
+# -hdbscan.minPts 66
+# 
+# elki.clustering.hierarchical.extraction.HDBSCANHierarchyExtraction
+# -hdbscan.minclsize 65
+# -hdbscan.hierarchical false
+# 
+# elki.workflow.EvaluationStep
+# -evaluator AutomaticEvaluation

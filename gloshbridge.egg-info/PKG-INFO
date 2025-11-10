@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: gloshbridge
+Version: 0.1.1
+Summary: A simple library that enables you to use glosh from different libraries.
+Author-email: Shukurillo <m.shukurillo2002@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/shukurillo0516/gloshbridge.git
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: scikit-learn
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: hdbscan==0.8.40
