@@ -76,3 +76,36 @@ def test_glosh_scores_rust_3(sample_test_data_path):
     )
 
     np.testing.assert_allclose(glosh_scores, expected, rtol=1e-5)
+
+
+def test_glosh_scores_rust_4(sample_test_data_path):
+    glosh_scores = GLOSHBridge(
+        "tests/datasets/toy/toy_with_outliers.csv", min_pts=5, min_clsize=7
+    ).calc_rust_outlier_scores()
+
+    expected = np.array(
+        [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.105573,
+            0.0,
+            0.367544,
+            0.333333,
+            0.0,
+            0.0,
+            0.4453,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.514929,
+        ]
+    )
+
+    np.testing.assert_allclose(glosh_scores, expected, rtol=1e-5)

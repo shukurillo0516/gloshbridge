@@ -2,7 +2,7 @@ import os
 import subprocess
 import numpy as np
 import pandas as pd
-from .glosh_calc_cor import GLOSH, FastGLOSH
+from .glosh_calc_cor import GLOSH
 from pathlib import Path
 
 
@@ -23,15 +23,17 @@ class GLOSHBridge:
         self.min_clsize = min_clsize if min_clsize else min_pts - 1  # Don't give it to Rust,
 
     @staticmethod
+    def read_csv(file_path):
+        df = pd.read_csv(file_path)
+        df.drop(columns=["outlier", "outliers"], inplace=True)
+        return df
+
+    @staticmethod
     def get_tmp_path():
         return os.path.join(BASE_DIR, "tmp/glosh_scores.csv")
 
     def calc_py_outlier_scores(self) -> np.array:
         calc = GLOSH(data=self.data.to_numpy(), min_pts=self.min_pts, min_clsize=self.min_clsize)
-        return calc.calc_glosh_scores()
-
-    def calc_py_outlier_scores_fast(self) -> np.array:
-        calc = FastGLOSH(data=self.data.to_numpy(), min_pts=self.min_pts, min_clsize=self.min_clsize)
         return calc.calc_glosh_scores()
 
     def calc_rust_outlier_scores(self, out_path: str | None = None) -> np.array:
