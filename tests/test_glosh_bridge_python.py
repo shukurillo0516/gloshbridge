@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from gloshbridge import GLOSHBridge
+from gloshbridge import GLOSHBridge, PythonBackend
 
 
 @pytest.fixture
@@ -9,7 +9,7 @@ def sample_test_data_path():
 
 
 def test_glosh_scores_py_1(sample_test_data_path):
-    glosh_scores = GLOSHBridge(sample_test_data_path, min_pts=5, min_clsize=3).calc_py_outlier_scores()
+    glosh_scores = GLOSHBridge(backend=PythonBackend()).fit_predict(sample_test_data_path, min_pts=5, min_clsize=3)
 
     expected = np.array(
         [
@@ -40,7 +40,7 @@ def test_glosh_scores_py_1(sample_test_data_path):
 
 
 def test_glosh_scores_py_2(sample_test_data_path):
-    glosh_scores = GLOSHBridge(sample_test_data_path, min_pts=3, min_clsize=3).calc_py_outlier_scores()
+    glosh_scores = GLOSHBridge(backend=PythonBackend()).fit_predict(sample_test_data_path, min_pts=3, min_clsize=3)
 
     expected = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.64644661, 0.75])
 
@@ -48,7 +48,7 @@ def test_glosh_scores_py_2(sample_test_data_path):
 
 
 def test_glosh_scores_py_3(sample_test_data_path):
-    glosh_scores = GLOSHBridge(sample_test_data_path, min_pts=5, min_clsize=7).calc_py_outlier_scores()
+    glosh_scores = GLOSHBridge(backend=PythonBackend()).fit_predict(sample_test_data_path, min_pts=5, min_clsize=7)
 
     expected = np.array(
         [
